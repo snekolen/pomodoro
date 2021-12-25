@@ -3,6 +3,7 @@
 public class Task {
     private String taskName; //Name of task
     private boolean taskComplete; //Status of task
+    private String note; //Note about task
 
     public Task() {
         this.taskName = "";
@@ -12,6 +13,7 @@ public class Task {
     public Task(String t) {
         this.taskName = t;
         this.taskComplete = false;
+        this.note = "";
     }
 
     //Edit and return task and completion status
@@ -20,8 +22,12 @@ public class Task {
     }
 
     public void editStatus() {
-        if(taskComplete) taskComplete = false; //Changing task to incomplete
-        else taskComplete = true; //Changing task to complete
+        if(taskComplete) this.taskComplete = false; //Changing task to incomplete
+        else this.taskComplete = true; //Changing task to complete
+    }
+
+    public void editNote(String n){
+        this.note = n;
     }
 
     public String getTask() {
@@ -30,5 +36,9 @@ public class Task {
 
     public boolean getStatus() {
         return taskComplete;
+    }
+
+    public String getNote(){
+        return note;
     }
 }
