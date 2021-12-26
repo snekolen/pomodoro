@@ -88,47 +88,6 @@ public class List {
         incompleteTasks.removeElement(t);
         incompleteTasks.insertElementAt(t, p + 1);
     }
-
-    //Testing
-    public Task getIncomAt(int i){
-        return incompleteTasks.get(i);
-    }
-
-    public Task getComAt(int i){
-        return completeTasks.get(i);
-    }
-
-
-    public static void main(String args[]){
-        Task taskA = new Task("Finish List class");
-        Task taskB = new Task("Learn UX design");
-        Task taskC = new Task("Play around with JFrame");
-
-        List a = new List();
-
-        a.addTask(taskA);
-        a.addTask(taskB);
-        a.addTask(taskC);
-
-        a.markComplete(taskB);
-        a.markComplete(taskC);
-
-        a.markIncomplete(taskC);
-
-        //Incomplete tasks
-        System.out.println("===============================");
-        System.out.println("Incomplete tasks: ");
-        for(int i = 0; i < a.getIncomplete().size(); i++){
-            System.out.println(a.getIncomAt(i).getTask());
-        }
-
-        //Complete tasks
-        System.out.println("===============================");
-        System.out.println("Complete tasks: ");
-        for(int i = 0; i < a.getComplete().size(); i++){
-            System.out.println(a.getComAt(i).getTask());
-        }
-    }
 }
 
 //Other notes: 

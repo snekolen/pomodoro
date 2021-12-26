@@ -1,8 +1,6 @@
 import java.util.Date;
 
-//May be used for displaying JFrame instead
-
-//Allow user to customize
+//Used for displaying JFrame
 
 public class Main {
     public static void main(String args[]) {

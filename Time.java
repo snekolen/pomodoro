@@ -33,6 +33,11 @@ public class Time {
         return breakTime;
     }
 
+    public void resetTimes() {
+        this.taskTime = 25;
+        this.breakTime = 5;
+    }
+
     //Return array with current and end of task and break times
     public Date[] retDates() {
         Date[] date = new Date[3];
