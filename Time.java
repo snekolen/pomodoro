@@ -3,30 +3,34 @@ import java.util.Date;
 
 //This class sets times for the countdown timer
 public class Time {
-    private int taskTime;
+    private int pomoTime;
     private int breakTime;
 
+    public boolean pomodoro;
+
     public Time() { //Default constructor
-        this.taskTime = 25;
+        this.pomoTime = 25;
         this.breakTime = 5;
+
+        this.pomodoro = true;
     }
 
     public Time(int t, int b) { //Parametrized constructor (Needed?)
-        this.taskTime = t;
+        this.pomoTime = t;
         this.breakTime = b;
     }
 
     //Getter and setter functions
-    public void setT(int t) {
-        this.taskTime = t;
+    public void setP(int p) {
+        this.pomoTime = p;
     }
 
     public void setB(int b) {
         this.breakTime = b;
     }
 
-    public int getT() {
-        return taskTime;
+    public int getP() {
+        return pomoTime;
     }
 
     public int getB() {
@@ -34,20 +38,37 @@ public class Time {
     }
 
     public void resetTimes() {
-        this.taskTime = 25;
+        this.pomoTime = 25;
         this.breakTime = 5;
+        this.pomodoro = true;
+    }
+    
+    public void switchMode(){
+        if(pomodoro) this.pomodoro = false; //Pomodoro finished
+        else this.pomodoro = true; //Break time finished
     }
 
     //Return array with current and end of task and break times
-    public Date[] retDates() {
-        Date[] date = new Date[3];
+    public Date retTime() {
         Calendar curr = Calendar.getInstance();
-        date[0] = curr.getTime();
+        long millis = curr.getTimeInMillis();
+        long time;
 
+        if(pomodoro){
+            time = pomoTime * 60 * 1000;
+        }else{
+            time = breakTime * 60 * 1000;
+        }
 
-        long milis = curr.getTimeInMillis();
-        date[1] = new Date(milis + (taskTime * 60 * 1000));
-        date[2] = new Date(milis + ((taskTime + breakTime) * 60 * 1000));
-        return date;
+        switchMode();
+        
+        Date intervalEnd = new Date(millis + time);
+        return intervalEnd;
+    }
+
+    public static void main(String args[]) {
+        Time obj = new Time();
+        System.out.println(obj.retTime()); //pomodoro
+        System.out.println(obj.retTime()); //break
     }
 }
